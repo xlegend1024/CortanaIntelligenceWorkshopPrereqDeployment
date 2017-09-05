@@ -261,6 +261,7 @@
                             "protectedSettings": {}
                         },
                         "dependsOn": [
+                            "[resourceId('Microsoft.Compute/virtualMachines/extensions', 'mydcs')]",
                             "[resourceId('Microsoft.Compute/virtualMachines', variables('labVmName'))]"
                         ]
                     }
