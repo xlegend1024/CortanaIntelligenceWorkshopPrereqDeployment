@@ -12,8 +12,9 @@ $p.HasExited
 $p.ExitCode
 
 $webappUrl = "https://github.com/xlegend1024/AdventureWorksTravel.git"
-$cloneDir = "C:\myWebApp"
-$gitP = Start-Process "git.exe" -ArgumentList "clone $webappUrl --separate-git-dir=$cloneDir" 
+$cloneDir = "C:\myWebApp"$gitArg = "clone 
+$webappUrl --separate-git-dir=$cloneDir"
+$gitP = Start-Process "git.exe" -ArgumentList $gitArg
 $gitP.HasExited
 $gitP.ExitCode
 
