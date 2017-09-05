@@ -214,7 +214,7 @@
                 },
                 "resources": [{
                         "name": "mydcs",
-                        "type": "extensions",
+                        "type": "Microsoft.Compute/virtualMachines/extensions",
                         "location": "[parameters('deploymentLocation')]",
                         "apiVersion": "[variables('vmApiVersion')]",
                         "dependsOn": [
