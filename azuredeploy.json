@@ -214,7 +214,7 @@
                 },
                 "resources": [{
                         "name": "mydcs",
-                        "type": "Microsoft.Compute/virtualMachines/extensions",
+                        "type": "extensions",
                         "location": "[parameters('deploymentLocation')]",
                         "apiVersion": "[variables('vmApiVersion')]",
                         "dependsOn": [
@@ -242,7 +242,7 @@
                         }
                     },
                     {
-                        "type": "Microsoft.Compute/virtualMachines/extensions",
+                        "type": "extensions",
                         "name": "install_git",
                         "apiVersion": "2016-04-30-preview",
                         "location": "[parameters('deploymentLocation')]",
@@ -261,7 +261,6 @@
                             "protectedSettings": {}
                         },
                         "dependsOn": [
-                            "[resourceId('Microsoft.Compute/virtualMachines/extensions', 'mydcs')]",
                             "[resourceId('Microsoft.Compute/virtualMachines', variables('labVmName'))]"
                         ]
                     }
