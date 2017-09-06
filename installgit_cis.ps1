@@ -1,4 +1,5 @@
 # Azure CIS Workshop Dev VM
+
 $gitUrl = "https://github.com/git-for-windows/git/releases/download/v2.14.1.windows.1/Git-2.14.1-64-bit.exe"
 $storageDir = $env:TEMP
 $arg = '/SILENT'
@@ -6,6 +7,7 @@ $arg = '/SILENT'
 $webclient = New-Object System.Net.WebClient
 $file = "$storageDir\Git-2.14.1-64-bit.exe"
 $webclient.DownloadFile($gitUrl, $file)
+$gitpath = "C:\Program Files\Git\bin\git.exe"
 
 $Location = "C:\data\"
 New-Item -Path $Location -ItemType "directory"
@@ -35,13 +37,13 @@ $pbiArg = "ACCEPT_EULA=1 /quiet"
 $Location = "C:\myWebApp\"
 New-Item -Path $Location -ItemType "directory"
 $webappUrl = "https://github.com/xlegend1024/AdventureWorksTravel.git"
-$cloneDir = "C:\myWebApp"
+$cloneDir = "C:\myWebApp\"
 $gitArg = "clone $webappUrl --separate-git-dir=$cloneDir"
 
 $p = Start-Process $file -ArgumentList $arg -wait -NoNewWindow -PassThru
 $pbiP = Start-Process $pbiFile -ArgumentList $pbiArg
-$gitP = Start-Process "git.exe" -ArgumentList $gitArg
-
+$gitP = Start-Process $gitpath -ArgumentList $gitArg
+<#
 $p.HasExited
 $pbiP.HasExited
 $gitP.HasExited
@@ -49,4 +51,9 @@ $gitP.HasExited
 $gitP.ExitCode
 $pbiP.ExitCode
 $p.ExitCode
+#>
+
+
+
+
 
