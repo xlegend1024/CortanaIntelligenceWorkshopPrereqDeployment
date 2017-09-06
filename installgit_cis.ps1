@@ -53,7 +53,8 @@ $pbiP = Start-Process $pbiFile -ArgumentList $pbiArg
 #Clone Web App
 $Location = "C:\myWebApp\"
 New-Item -Path $Location -ItemType "directory"
-$webappUrl = "https://github.com/xlegend1024/AdventureWorksTravel.git"
+#$webappUrl = "https://github.com/xlegend1024/AdventureWorksTravel.git"
+$webappUrl = "https://github.com/toddkitta/AdventureWorksTravel.git"
 $gitpath = "C:\Program Files\Git\bin\git.exe"
 $gitArg = "clone $webappUrl $Location"
 $gitP = Start-Process $gitpath -ArgumentList $gitArg
