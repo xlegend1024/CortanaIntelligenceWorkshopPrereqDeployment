@@ -40,6 +40,8 @@
             "nicName": "[concat(variables('cleanAppName'), 'nic')]",
             "publicIPAddressName": "[concat(variables('cleanAppName'), 'publicip')]",
             "labVmName": "[concat(variables('cleanAppName'), 'lab')]",
+            "webappName": "[parameters('appName')]",
+            "webappPlanName": "[concat(parameters('appName'), 'plan')]",
             "mlWorkspaceName": "[concat(variables('cleanAppName'), 'ml')]",
             "mlResourceId": "[resourceId('Microsoft.MachineLearning/workspaces', variables('mlWorkspaceName'))]",
             "mlStorageResourceId": "[resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName'))]",
@@ -211,31 +213,29 @@
                     }
                 },
                 // VM extension
-                "resources": [
-                    {
-                        "type": "extensions",
-                        "name": "CISWorkshop_cfg",
-                        "apiVersion": "2016-04-30-preview",
-                        "location": "[parameters('deploymentLocation')]",
-                        "scale": null,
-                        "properties": {
-                            "publisher": "Microsoft.Compute",
-                            "type": "CustomScriptExtension",
-                            "typeHandlerVersion": "1.7",
-                            "autoUpgradeMinorVersion": true,
-                            "settings": {
-                                "fileUris": [
-                                    "https://raw.githubusercontent.com/xlegend1024/CortanaIntelligenceWorkshopPrereqDeployment/master/installgit_cis.ps1"
-                                ],
-                                "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File installgit_cis.ps1"
-                            },
-                            "protectedSettings": {}
+                "resources": [{
+                    "type": "extensions",
+                    "name": "CISWorkshop_cfg",
+                    "apiVersion": "2016-04-30-preview",
+                    "location": "[parameters('deploymentLocation')]",
+                    "scale": null,
+                    "properties": {
+                        "publisher": "Microsoft.Compute",
+                        "type": "CustomScriptExtension",
+                        "typeHandlerVersion": "1.7",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "fileUris": [
+                                "https://raw.githubusercontent.com/xlegend1024/CortanaIntelligenceWorkshopPrereqDeployment/master/installgit_cis.ps1"
+                            ],
+                            "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File installgit_cis.ps1"
                         },
-                        "dependsOn": [
-                            "[resourceId('Microsoft.Compute/virtualMachines', variables('labVmName'))]"
-                        ]
-                    }
-                ]
+                        "protectedSettings": {}
+                    },
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Compute/virtualMachines', variables('labVmName'))]"
+                    ]
+                }]
             },
             // HDInsight
             {
@@ -296,6 +296,37 @@
                             }
                         ]
                     }
+                }
+            },
+            {
+                "type": "Microsoft.Web/sites",
+                "name": "[variables('webappName')]",
+                "apiVersion": "2016-03-01",
+                "location": "[parameters('deploymentLocation')]",
+                "properties": {
+                    "name": "[variables('webappName')]",
+                    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('webappPlanName'))]",
+                    "hostingEnvironment": ""
+                },
+                "dependsOn": [
+                    "[resourceId('Microsoft.Web/serverfarms', variables('webappPlanName'))]"
+                ]
+            },
+            {
+                "type": "Microsoft.Web/serverfarms",
+                "sku": {
+                    "Tier": "Standard",
+                    "Name": "S1"
+                },
+                "name": "[variables('webappPlanName')]",
+                "apiVersion": "2016-09-01",
+                "location": "[parameters('deploymentLocation')]",
+                "properties": {
+                    "name": "[variables('webappPlanName')]",
+                    "workerSizeId": "0",
+                    "reserved": false,
+                    "numberOfWorkers": "1",
+                    "hostingEnvironment": ""
                 }
             }
         ],
