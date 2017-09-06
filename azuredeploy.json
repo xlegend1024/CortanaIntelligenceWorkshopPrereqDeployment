@@ -212,7 +212,8 @@
                         }]
                     }
                 },
-                "resources": [{
+                "resources": [
+                    {
                         "name": "mydcs",
                         "type": "extensions",
                         "location": "[parameters('deploymentLocation')]",
@@ -261,7 +262,8 @@
                             "protectedSettings": {}
                         },
                         "dependsOn": [
-                            "[resourceId('Microsoft.Compute/virtualMachines', variables('labVmName'))]"
+                            "[resourceId('Microsoft.Compute/virtualMachines', variables('labVmName'))]",
+                            "[resourceId('Microsoft.Compute/virtualMachines/extensions', 'mydsc')]"
                         ]
                     }
                 ]
