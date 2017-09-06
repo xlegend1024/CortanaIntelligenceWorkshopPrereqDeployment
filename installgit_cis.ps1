@@ -16,11 +16,18 @@ $dataUrl = "https://hyssh0mtc0sea.blob.core.windows.net/awtworkshopdata/AWT.CSV"
 $datafile = "C:\data\1.MachineLearning\awt_flightsandweather.csv"
 $webclient.DownloadFile($dataUrl, $datafile)
 
+#Download ML Training data
+$Location = "C:\data\1.MachineLearning\"
+New-Item -Path $Location -ItemType "directory"
+$data2Url = "https://hyssh0mtc0sea.blob.core.windows.net/awtworkshopdata/airportlocations.csv"
+$data2file = "C:\data\airportlocations.csv"
+$webclient.DownloadFile($data2Url, $data2file)
+
 #Download ML Batch data
 $Location = "C:\data\"
 New-Item -Path $Location -ItemType "directory"
 $fnwUrl = "http://aka.ms/flightsandweather"
-$flightandweatherfile = "C:\data\flightsandweather.csv"
+$flightandweatherfile = "C:\data\FlightsAndWeather.csv"
 $webclient.DownloadFile($fnwUrl, $flightandweatherfile)
 
 #Download ADF Data Movement Gateway msi
