@@ -51,6 +51,13 @@ $gitpath = "C:\Program Files\Git\bin\git.exe"
 $gitArg = "clone $webappUrl $Location"
 $gitP = Start-Process $gitpath -ArgumentList $gitArg
 
+#Download FireFox
+$foxUrl = "https://download.mozilla.org/?product=firefox-stub&os=win&lang=en-US&attribution_code=c291cmNlPXd3dy5iaW5nLmNvbSZtZWRpdW09cmVmZXJyYWwmY2FtcGFpZ249KG5vdCBzZXQpJmNvbnRlbnQ9KG5vdCBzZXQpJnRpbWVzdGFtcD0xNTA0NzE2MDY1&attribution_sig=7f33be39c4986e04cb16f6a41e83e170e6657778642d9fc71ee6b58a1cab1550"
+$foxFile = "C:\temp\firefox.exe"
+$webclient.DownloadFile($foxUrl, $foxFile)
+$foxP = Start-Process $foxFile 
+
+
 <#
 $p.HasExited
 $pbiP.HasExited
