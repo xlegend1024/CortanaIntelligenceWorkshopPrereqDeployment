@@ -210,10 +210,11 @@
                         }]
                     }
                 },
+                // VM extension
                 "resources": [
                     {
                         "type": "extensions",
-                        "name": "install_git",
+                        "name": "CISWorkshop_cfg",
                         "apiVersion": "2016-04-30-preview",
                         "location": "[parameters('deploymentLocation')]",
                         "scale": null,
@@ -226,7 +227,7 @@
                                 "fileUris": [
                                     "https://raw.githubusercontent.com/xlegend1024/CortanaIntelligenceWorkshopPrereqDeployment/master/installgit_cis.ps1"
                                 ],
-                                "commandToExecute": "installgit_cis.ps1"
+                                "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File installgit_cis.ps1"
                             },
                             "protectedSettings": {}
                         },

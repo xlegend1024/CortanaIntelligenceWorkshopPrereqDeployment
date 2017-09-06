@@ -63,10 +63,12 @@ $foxP = Start-Process $foxFile
 $p.HasExited
 $pbiP.HasExited
 $gitP.HasExited
+$foxP.HasExited
 
 $gitP.ExitCode
 $pbiP.ExitCode
 $p.ExitCode
+$foxP.ExitCode
 #>
 
 
