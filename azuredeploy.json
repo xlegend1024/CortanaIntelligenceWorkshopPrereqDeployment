@@ -55,8 +55,6 @@
             "imageOffer": "WindowsServer",
             "clusterNodeSize": "Standard_D12_v2",
             "clusterWorkerNodeCount": 2,
-            "mydcsConfigurationFunction": "mydcsConfiguration.ps1\\Main",
-            "dscModuleUrl": "https://raw.github.com/xlegend1024/CortanaIntelligenceWorkshopPrereqDeployment/master/dsc.zip",
             "mlLocation": "southcentralus",
             "clusterApiVersion": "2015-03-01-preview",
             "storageApiVersion": "2016-01-01",
@@ -214,35 +212,6 @@
                 },
                 "resources": [
                     {
-                        "name": "mydcs",
-                        "type": "extensions",
-                        "location": "[parameters('deploymentLocation')]",
-                        "apiVersion": "[variables('vmApiVersion')]",
-                        "dependsOn": [
-                            "[resourceId('Microsoft.Compute/virtualMachines/', variables('labVmName'))]"
-                        ],
-                        "tags": {
-                            "displayName": "mydcs"
-                        },
-                        "properties": {
-                            "publisher": "Microsoft.Powershell",
-                            "type": "DSC",
-                            "typeHandlerVersion": "2.9",
-                            "autoUpgradeMinorVersion": true,
-                            "settings": {
-                                "modulesUrl": "[variables('dscModuleUrl')]",
-                                "sasToken": "",
-                                "configurationFunction": "[variables('mydcsConfigurationFunction')]",
-                                "properties": {
-                                    "nodeName": "[variables('labVmName')]",
-                                    "PBIDLink": "http://go.microsoft.com/fwlink/?LinkID=521662",
-                                    "PBIDProductId": "BE8EB26F-969B-4C1A-970E-39782EE25765"
-                                }
-                            },
-                            "protectedSettings": {}
-                        }
-                    },
-                    {
                         "type": "extensions",
                         "name": "install_git",
                         "apiVersion": "2016-04-30-preview",
@@ -262,8 +231,7 @@
                             "protectedSettings": {}
                         },
                         "dependsOn": [
-                            "[resourceId('Microsoft.Compute/virtualMachines', variables('labVmName'))]",
-                            "[resourceId('Microsoft.Compute/virtualMachines/extensions', 'mydsc')]"
+                            "[resourceId('Microsoft.Compute/virtualMachines', variables('labVmName'))]"
                         ]
                     }
                 ]

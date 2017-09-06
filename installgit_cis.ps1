@@ -57,6 +57,7 @@ $foxFile = "C:\temp\firefox.exe"
 $webclient.DownloadFile($foxUrl, $foxFile)
 $foxP = Start-Process $foxFile 
 
+#http://www.google.com/chrome/eula.html?system=true&standalone=1&platform=win64
 
 <#
 $p.HasExited
