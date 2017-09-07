@@ -19,9 +19,9 @@ $webclient.DownloadFile($dataUrl, $datafile)
 
 #Download ML Training data
 $Location = "C:\data\1.MachineLearning\"
-New-Item -Path $Location -ItemType "directory"
+New-Item -Path $Location -ItemType "directory" 
 $data2Url = "https://hyssh0mtc0sea.blob.core.windows.net/awtworkshopdata/airportlocations.csv"
-$data2file = "C:\data\airportlocations.csv"
+$data2file = "C:\data\1.MachineLearning\airportlocations.csv"
 $webclient.DownloadFile($data2Url, $data2file)
 
 #Download ML Batch data
