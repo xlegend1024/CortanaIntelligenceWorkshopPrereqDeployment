@@ -311,7 +311,24 @@
                 },
                 "dependsOn": [
                     "[resourceId('Microsoft.Web/serverfarms', variables('webappPlanName'))]"
-                ]
+                ],
+                "resources": [{
+                    "name": "appsettings",
+                    "type": "config",
+                    "apiVersion": "2015-08-01",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/sites', variables('webappName'))]"
+                    ],
+                    "tags": {
+                        "displayName": "WebAppSettings"
+                    },
+                    "properties": {
+                        "mlApiKey": "replacevalue",
+                        "mlWorkspaceId": "replacevalue",
+                        "mlServiceId": "replacevalue",
+                        "weatherApiKey": "replacevalue"
+                    }
+                }]
             },
             {
                 "type": "Microsoft.Web/serverfarms",
@@ -328,23 +345,6 @@
                     "reserved": false,
                     "numberOfWorkers": "1",
                     "hostingEnvironment": ""
-                }
-            },
-            {
-                "name": "appsettings",
-                "type": "config",
-                "apiVersion": "2015-08-01",
-                "dependsOn": [
-                    "[resourceId('Microsoft.Web/sites', variables('webappName'))]"
-                ],
-                "tags": {
-                    "displayName": "WebAppSettings"
-                },
-                "properties": {
-                    "mlApiKey": "replacevalue",
-                    "mlWorkspaceId": "replacevalue",
-                    "mlServiceId": "replacevalue",
-                    "weatherApiKey": "replacevalue"
                 }
             }
         ],
