@@ -59,6 +59,10 @@ $webappUrl = "https://github.com/toddkitta/AdventureWorksTravel.git"
 $gitpath = "C:\Program Files\Git\bin\git.exe"
 $gitArg = "clone $webappUrl $Location"
 $gitP = Start-Process $gitpath -ArgumentList $gitArg
+$gitmail = "config --global user.email ""you@example.com"""
+$gitname = "config --global user.name ""Your Name"""
+$gitP = Start-Process $gitpath -ArgumentList $gitmail
+$gitP = Start-Process $gitpath -ArgumentList $gitname
 
 #Download FireFox
 $foxUrl = "https://download.mozilla.org/?product=firefox-stub&os=win&lang=en-US&attribution_code=c291cmNlPXd3dy5iaW5nLmNvbSZtZWRpdW09cmVmZXJyYWwmY2FtcGFpZ249KG5vdCBzZXQpJmNvbnRlbnQ9KG5vdCBzZXQpJnRpbWVzdGFtcD0xNTA0NzE2MDY1&attribution_sig=7f33be39c4986e04cb16f6a41e83e170e6657778642d9fc71ee6b58a1cab1550"
