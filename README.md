@@ -12,7 +12,7 @@ This GitHub repo exists to get you ready for the Cortana Intelligence End-to-End
    - Recommendation is to have each user have their own Azure subscription. This will allow every attendee to have their own sandbox.
 - Please keep in mind that HDInsight cluster and VM you provision as setup for this workshop will incur charges, so provision these resources closest to the workshop date as possible.  Preferably the afternoon/night before the workshop.
 
-## Deploy Workshop Environment to Azure
+## 1. Deploy Workshop Environment to Azure
 
 This GitHub repo can deploy the assets to Azure needed to complete the Cortana Intelligence Workshop. We are leveraging a capability of Azure called ARM templates which allow you to specifiy what your solution looks like from a deployment perspetive simply by using JSON code. This is a fairly simple use of ARM templates, but you can actually deploy very complex topologies using this technology - straight from source control. Pretty cool!!
 
@@ -38,7 +38,7 @@ When you click the "Deploy to Azure" button, you will be taken to the Azure port
     * **NOTE: Do not include any extraneous characters aside from letters (e.g. dashes, underscores, etc.).**
 * **Deployment Location** - The default deployment location for the resources needed for the workshop. This does *not* have to be the same as the location chosen for the Resource Group.
 
-## Acquire Weather Underground API Key
+## 2. Acquire Weather Underground API Key
 
 1. To retrieve the 10-day hourly weather forecast, you will use an API from WeatherUnderground.com. There is a free developer version that provides you access to the API you will need for this workshop.
 1. Navigate to https://www.wunderground.com/signup?mode=api_signup and create an account.
