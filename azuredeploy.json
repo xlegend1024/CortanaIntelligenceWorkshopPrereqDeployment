@@ -223,7 +223,7 @@
                         "publisher": "microsoft-ads",
                         "offer": "windows-data-science-vm",
                         "sku": "windows2016",
-                        "version": "lat0.2.02est"
+                        "version": "latest"
                     },
                     "osDisk": {
                         "name": "osdisk",
