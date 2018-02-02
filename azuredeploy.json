@@ -107,10 +107,12 @@
             "tags": {
                 "Env": "demo"
             },
-            "scale": null,
             "properties": {
                 "defaultDataLakeStoreAccount": "[variables('ADLSAccountName')]",
-                "dataLakeStoreAccounts": "[variables('ADLSAccountName')]"
+                "dataLakeStoreAccounts": [{
+                    "name":"[variables('ADLSAccountName')]"}
+                ],
+                "newTier": "Consumption"
             },
             "dependsOn": []
         },
