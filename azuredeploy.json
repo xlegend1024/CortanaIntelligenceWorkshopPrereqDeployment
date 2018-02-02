@@ -277,7 +277,7 @@
                 "[concat('Microsoft.Storage/storageAccounts/', variables('clusterStorageAccountName'))]"
             ],
             "properties": {
-                "clusterVersion": "3.4",
+                "clusterVersion": "3.6",
                 "osType": "Linux",
                 "clusterDefinition": {
                     "kind": "spark",
