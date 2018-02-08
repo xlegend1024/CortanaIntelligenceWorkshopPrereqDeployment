@@ -213,7 +213,7 @@
         }
       },
       {
-        "apiVersion": "[variables('vmApiVersion')]",
+        "apiVersion": "2017-03-30",
         "dependsOn": [
           "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
         ],
