@@ -115,7 +115,7 @@
           "newTier": "Consumption"
         },
         "dependsOn": [
-          "[concat('Microsoft.DataLakeStore/accounts', variables('ADLSAccountName'))]"
+          "[concat('Microsoft.DataLakeStore/accounts/', variables('ADLSAccountName'))]"
         ]
       },
       {
