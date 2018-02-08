@@ -247,8 +247,7 @@
                     "networkInterfaces": [{
                         "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
                     }]
-                }
-            },
+                },
             "resources": [{
                 "type": "extensions",
                 "name": "CISWorkshop_cfg",
