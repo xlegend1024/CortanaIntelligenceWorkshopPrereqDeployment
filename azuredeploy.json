@@ -218,7 +218,12 @@
           "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
         ],
         "location": "[parameters('deploymentLocation')]",
-        "name": "[variables('labVmName')]"      ,
+        "name": "[variables('labVmName')]",
+        "plan": {
+            "name": "windows2016",
+            "product": "windows-data-science-vm",
+            "publisher": "microsoft-ads"
+        },
         "properties": {
           "hardwareProfile": {
             "vmSize": "[variables('vmSize')]"
