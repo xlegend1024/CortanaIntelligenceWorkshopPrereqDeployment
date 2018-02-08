@@ -273,7 +273,6 @@
                 ]
             }]
         },
-        // HDInsight
         {
             "name": "[variables('clusterName')]",
             "type": "Microsoft.HDInsight/clusters",
@@ -334,7 +333,6 @@
                 }
             }
         },
-        //web app
         {
             "type": "Microsoft.Web/sites",
             "name": "[variables('webappName')]",
@@ -385,13 +383,5 @@
         }
     ],
     "outputs": {
-        "mlWorkspaceObject": {
-            "type": "object",
-            "value": "[reference(variables('mlResourceId'), variables('mlApiVersion'))]"
-        },
-        "mlWorkspaceToken": {
-            "type": "object",
-            "value": "[listWorkspaceKeys(variables('mlResourceId'), variables('mlApiVersion'))]"
-        }
     }
 }
