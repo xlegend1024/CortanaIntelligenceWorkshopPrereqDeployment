@@ -65,7 +65,6 @@
         "mlApiVersion": "2016-04-01"
     },
     "resources": [
-        // storage
         {
             "name": "[variables('clusterStorageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
@@ -130,7 +129,6 @@
             "properties": {},
             "dependsOn": []
         },
-        // Azure ML
         {
             "apiVersion": "[variables('mlApiVersion')]",
             "type": "Microsoft.MachineLearning/workspaces",
@@ -143,7 +141,6 @@
                 "UserStorageAccountId": "[variables('mlStorageResourceId')]"
             }
         },
-        // ADF V2
         {
 
             "name": "[variables('ADFv2AccountName')]",      
@@ -155,7 +152,6 @@
               "loggingStorageAccountKey": "[variables('vmStorageAccountName')]"      
             }
         },
-        // networking
         {
             "apiVersion": "[variables('networkingApiVersion')]",
             "type": "Microsoft.Network/publicIPAddresses",
@@ -211,7 +207,6 @@
                 }]
             }
         },
-        // Lab VM
         {
             "name": "[variables('labVmName')]",
             "type": "Microsoft.Compute/virtualMachines",
@@ -240,11 +235,12 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "createOption": "FromImage",
+
+                        "createOption": "fromImage",
                         "managedDisk": {
                             "storageAccountType": "Premium_LRS"
                         }
-                        }
+                    }
                     }
                 },
                 "networkProfile": {
@@ -253,7 +249,6 @@
                     }]
                 }
             },
-            // VM extension
             "resources": [{
                 "type": "extensions",
                 "name": "CISWorkshop_cfg",
