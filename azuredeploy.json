@@ -240,11 +240,10 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "name": "[concat(variables('labVmName'),'OSdisk')]",
                         "createOption": "FromImage",
-                        "caching": "ReadWrite",
                         "managedDisk": {
-                            "id": "[concat(resourceId('Microsoft.Compute/virtualMachines/', variables('labVmName')),'disk')]"
+                            "storageAccountType": "Premium_LRS"
+                        }
                         }
                     }
                 },
