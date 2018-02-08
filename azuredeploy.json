@@ -37,6 +37,7 @@
         "mlStorageAccountName": "[concat(variables('cleanAppName'), 'mlstorage')]",
         "ADLSAccountName": "[concat(variables('cleanAppName'), 'adls')]",
         "ADLAAccountName": "[concat(variables('cleanAppName'), 'adla')]",
+        "ADFv2AccountName": "[concat(variables('cleanAppName'), 'adfv2')]",
         "virtualNetworkName": "[concat(variables('cleanAppName'), 'labnetwork')]",
         "subnetName": "[concat(variables('cleanAppName'), 'subnet')]",
         "nicName": "[concat(variables('cleanAppName'), 'nic')]",
@@ -99,7 +100,6 @@
             "location": "[variables('mlLocation')]"
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/d609b87a-9655-4a94-ba5a-00703a1679e6/resourceGroups/data-22414-rg/providers/Microsoft.DataLakeAnalytics/accounts/adla27005'.",
             "type": "Microsoft.DataLakeAnalytics/accounts",
             "name":"[variables('ADLAAccountName')]",
             "apiVersion": "2016-11-01",
@@ -117,7 +117,6 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/d609b87a-9655-4a94-ba5a-00703a1679e6/resourceGroups/data-22414-rg/providers/Microsoft.DataLakeStore/accounts/adls17065'.",
             "type": "Microsoft.DataLakeStore/accounts",
             "name": "[variables('ADLSAccountName')]",
             "apiVersion": "2016-11-01",
@@ -140,6 +139,18 @@
             ],
             "properties": {
                 "UserStorageAccountId": "[variables('mlStorageResourceId')]"
+            }
+        },
+        // ADF V2
+        {
+
+            "name": "[variables('ADFv2AccountName')]",      
+            "apiVersion": "2017-09-01-preview",      
+            "type": "Microsoft.DataFactory/factories",      
+            "location": "East US",      
+            "properties": {      
+              "loggingStorageAccountName": "[variables('vmStorageAccountName')]",      
+              "loggingStorageAccountKey": "[variables('vmStorageAccountName')]"      
             }
         },
         // networking
@@ -205,7 +216,6 @@
             "location": "[parameters('deploymentLocation')]",
             "apiVersion": "[variables('vmApiVersion')]",
             "dependsOn": [
-                "[concat('Microsoft.Storage/storageAccounts/', variables('vmStorageAccountName'))]",
                 "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
             ],
             "properties": {
@@ -229,10 +239,6 @@
                     },
                     "osDisk": {
                         "name": "osdisk",
-                        "vhd": {
-                            "uri": "[concat('http://', variables('vmStorageAccountName'), '.blob.core.windows.net/vmstorage/', variables('OSDiskName'), '.vhd')]"
-                        },
-                        "caching": "ReadWrite",
                         "createOption": "FromImage"
                     }
                 },
@@ -300,7 +306,7 @@
                 "computeProfile": {
                     "roles": [{
                             "name": "headnode",
-                            "targetInstanceCount": "2",
+                            "targetInstanceCount": "1",
                             "hardwareProfile": {
                                 "vmSize": "[variables('clusterNodeSize')]"
                             },
@@ -353,10 +359,10 @@
                     "displayName": "WebAppSettings"
                 },
                 "properties": {
-                    "mlApiKey": "replacevalue",
-                    "mlWorkspaceId": "replacevalue",
-                    "mlServiceId": "replacevalue",
-                    "weatherApiKey": "replacevalue"
+                    "mlApiKey": "2Be_replacevalue",
+                    "mlWorkspaceId": "2Be_replacevalue",
+                    "mlServiceId": "2Be_replacevalue",
+                    "weatherApiKey": "2Be_replacevalue"
                 }
             }]
         },
