@@ -46,9 +46,11 @@
       "webappName": "[parameters('appName')]",
       "webappPlanName": "[concat(parameters('appName'), 'plan')]",
       "mlWorkspaceName": "[concat(variables('cleanAppName'), 'ml')]",
+      "expWorkspaceName": "[concat(variables('cleanAppName'), 'exp')]",
+      "expModelspaceName": "[concat(variables('cleanAppName'), 'model')]",
       "mlResourceId": "[resourceId('Microsoft.MachineLearning/workspaces', variables('mlWorkspaceName'))]",
       "mlStorageResourceId": "[resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName'))]",
-      "vmSize": "Standard_DS2_v2",
+      "vmSize": "Standard_DS3_v2",
       "addressPrefix": "10.0.0.0/16",
       "subnetPrefix": "10.0.0.0/24",
       "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
@@ -397,7 +399,41 @@
           "numberOfWorkers": "1",
           "hostingEnvironment": ""
         }
-      }
+      },
+      {
+        "type": "Microsoft.MachineLearningExperimentation/accounts",
+        "name": "[variables('expWorkspaceName')]",
+        "apiVersion": "2017-05-01-preview",
+        "location": "eastus2",
+        "scale": null,
+        "properties": {
+            "friendlyName": null,
+            "seats": "2",
+            "description": null,
+            "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName'))]",
+            "vsoAccountId": ""
+        },
+        "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName'))]"
+        ]
+    },
+    {
+        "type": "Microsoft.MachineLearningModelManagement/accounts",
+        "sku": {
+            "name": "DevTest",
+            "capacity": 1
+        },
+        "name": "[variables('expModelspaceName')]",
+        "apiVersion": "2017-09-01-preview",
+        "location": "eastus2",
+        "scale": null,
+        "properties": {
+            "description": ""
+        },
+        "dependsOn": [
+          "[resourceId('Microsoft.MachineLearningExperimentation/accounts', variables('expWorkspaceName'))]"
+        ]
+    }
     ],
     "outputs": {
     }
