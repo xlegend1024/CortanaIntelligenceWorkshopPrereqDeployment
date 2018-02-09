@@ -33,7 +33,7 @@
       "cleanAppName": "[replace(replace(replace(toLower(parameters('appName')), '-', ''), '_', ''), '.', '')]",
       "clusterName": "[concat(variables('cleanAppName'), 'spark')]",
       "clusterStorageAccountName": "[concat(variables('cleanAppName'), 'sparkstorage')]",
-      "vmStorageAccountName": "[concat(variables('cleanAppName'), 'vmstorage')]",
+      "vmStorageAccountName": "[concat(variables('cleanAppName'), 'blobstrge')]",
       "mlStorageAccountName": "[concat(variables('cleanAppName'), 'mlstorage')]",
       "ADLSAccountName": "[concat(variables('cleanAppName'), 'adls')]",
       "ADLAAccountName": "[concat(variables('cleanAppName'), 'adla')]",
