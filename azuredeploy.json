@@ -48,7 +48,6 @@
       "mlWorkspaceName": "[concat(variables('cleanAppName'), 'ml')]",
       "expWorkspaceName": "[concat(variables('cleanAppName'), 'exp')]",
       "expModelspaceName": "[concat(variables('cleanAppName'), 'model')]",
-      "mlResourceId": "[resourceId('Microsoft.MachineLearning/workspaces', variables('mlWorkspaceName'))]",
       "mlStorageResourceId": "[resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName'))]",
       "vmSize": "Standard_DS3_v2",
       "addressPrefix": "10.0.0.0/16",
@@ -62,7 +61,6 @@
       "clusterApiVersion": "2015-03-01-preview",
       "storageApiVersion": "2016-01-01",
       "networkingApiVersion": "2015-06-15",
-      "vmApiVersion": "2015-06-15",
       "mlApiVersion": "2016-04-01"
     },
     "resources": [
