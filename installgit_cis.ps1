@@ -1,4 +1,4 @@
-# Azure CIS Workshop Dev VM
+1# Azure CIS Workshop Dev VM
 
 #Web Client
 $webclient = New-Object System.Net.WebClient
@@ -15,22 +15,22 @@ $webclient.DownloadFile($gitUrl, $file)
 #Download ML Training data
 $Location = "C:\data\1.MachineLearning\"
 New-Item -Path $Location -ItemType "directory"
-$dataUrl = "https://hyssh0mtc0sea.blob.core.windows.net/awtworkshopdata/AWT.CSV"
-$datafile = "C:\data\1.MachineLearning\awt_flightsandweather.csv"
+$dataUrl = "https://hyssh0mtc0sea.blob.core.windows.net/awtworkshopdata/1AWT.CSV"
+$datafile = "C:\data\1.MachineLearning\1awt_flightsandweather.csv"
 $webclient.DownloadFile($dataUrl, $datafile)
 
 #Download ML Training data
 $Location = "C:\data\1.MachineLearning\"
 New-Item -Path $Location -ItemType "directory" 
-$data2Url = "https://hyssh0mtc0sea.blob.core.windows.net/awtworkshopdata/airportlocations.csv"
-$data2file = "C:\data\1.MachineLearning\airportlocations.csv"
+$data2Url = "https://hyssh0mtc0sea.blob.core.windows.net/awtworkshopdata/2airportlocations.csv"
+$data2file = "C:\data\1.MachineLearning\2airportlocations.csv"
 $webclient.DownloadFile($data2Url, $data2file)
 
 #Download ML Batch data
 $Location = "C:\data\"
 New-Item -Path $Location -ItemType "directory"
 $fnwUrl = "http://aka.ms/flightsandweather"
-$flightandweatherfile = "C:\data\FlightsAndWeather.csv"
+$flightandweatherfile = "C:\data\3FlightsAndWeather.csv"
 $webclient.DownloadFile($fnwUrl, $flightandweatherfile)
 
 #Download ADF Data Movement Gateway msi
