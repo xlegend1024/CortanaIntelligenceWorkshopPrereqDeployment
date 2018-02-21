@@ -143,18 +143,12 @@
         }
       },
       {
-  
         "name": "[variables('ADFv2AccountName')]",
-        "apiVersion": "2015-10-01",
+        "apiVersion": "2015-09-01",
         "type": "Microsoft.DataFactory/dataFactories",
         "location": "westus",
         "properties": {
-          "loggingStorageAccountName": "[variables('vmStorageAccountName')]",
-          "loggingStorageAccountKey": "[variables('vmStorageAccountName')]"
         },
-        "dependsOn": [
-          "[resourceId('Microsoft.Storage/storageAccounts/', variables('vmStorageAccountName'))]"
-        ],
         "resources": [
           {
             "type": "linkedservices",
@@ -195,7 +189,8 @@
                   },
                   "external": true
             }
-          }]
+          }
+        ]
       },
       {
         "apiVersion": "[variables('networkingApiVersion')]",
