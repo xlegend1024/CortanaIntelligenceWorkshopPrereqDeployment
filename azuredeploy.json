@@ -148,10 +148,6 @@
         "apiVersion": "2015-09-01",
         "type": "Microsoft.DataFactory/dataFactories",
         "location": "westus",
-        "properties": {
-          "loggingStorageAccountName": "[variables('vmStorageAccountName')]",
-          "loggingStorageAccountKey": "[variables('vmStorageAccountName')]"
-        },
         "resources": [
           {
             "type": "linkedservices",
