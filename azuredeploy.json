@@ -151,7 +151,48 @@
         "properties": {
           "loggingStorageAccountName": "[variables('vmStorageAccountName')]",
           "loggingStorageAccountKey": "[variables('vmStorageAccountName')]"
-        }
+        },
+        "resources": [
+          {
+            "type": "linkedservices",
+            "name": "BlobSource",
+            "dependsOn": [
+                  "[variables('ADFv2AccountName')]"
+            ],
+            "apiVersion": "2015-10-01",
+            "properties": {
+                  "type": "AzureStorage",
+                  "description": "Azure Storage linked service",
+                  "typeProperties": {
+                    "connectionString": "DefaultEndpointsProtocol=https;AccountName=hyssh0mtc0sea;AccountKey=7LuS4Hu0SMmVqLvm5BlRmBmwrs3Q7+04nlW8WzFOO2KYIXY+0HlAO0kvW3m6is/F/dDlbWBC3Buv6kdaSHs76w==;EndpointSuffix=core.windows.net"
+                  }
+            }
+          },
+          {
+            "type": "datasets",
+            "name": "FlightsAndWeatherDataSet",
+            "dependsOn": [
+                  "[variables('ADFv2AccountName')]"
+            ],
+            "apiVersion": "2015-10-01",
+            "properties": {
+                  "type": "AzureBlob",
+                  "linkedServiceName": "BlobSource",
+                  "typeProperties": {
+                    "fileName": "FlightsAndWeather.csv",
+                    "folderPath": "awtworkshopdata",
+                    "format": {
+                          "type": "TextFormat",
+                          "columnDelimiter": ","
+                    }
+                  },
+                  "availability": {
+                    "frequency": "Hour",
+                    "interval": 12
+                  },
+                  "external": true
+            }
+          }]
       },
       {
         "apiVersion": "[variables('networkingApiVersion')]",
