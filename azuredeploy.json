@@ -177,7 +177,7 @@
                   "type": "AzureBlob",
                   "linkedServiceName": "BlobSource",
                   "typeProperties": {
-                    "fileName": "FlightsAndWeather.csv",
+                    "fileName": "3FlightsAndWeather.csv",
                     "folderPath": "awtworkshopdata",
                     "format": {
                           "type": "TextFormat",
@@ -185,8 +185,8 @@
                     }
                   },
                   "availability": {
-                    "frequency": "Hour",
-                    "interval": 12
+                    "frequency": "Minute",
+                    "interval": 60
                   },
                   "external": true
             }
@@ -226,10 +226,9 @@
                     }
                   },
                   "availability": {
-                    "frequency": "Hour",
-                    "interval": 12
-                  },
-                  "external": true
+                    "frequency": "Minute",
+                    "interval": 60
+                  }
             }
           }
         ]
