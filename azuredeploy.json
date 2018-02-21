@@ -145,7 +145,7 @@
       {
   
         "name": "[variables('ADFv2AccountName')]",
-        "apiVersion": "2015-09-01",
+        "apiVersion": "2015-10-01",
         "type": "Microsoft.DataFactory/dataFactories",
         "location": "westus",
         "resources": [
