@@ -37,7 +37,7 @@
       "mlStorageAccountName": "[concat(variables('cleanAppName'), 'mlstorage')]",
       "ADLSAccountName": "[concat(variables('cleanAppName'), 'adls')]",
       "ADLAAccountName": "[concat(variables('cleanAppName'), 'adla')]",
-      "ADFv2AccountName": "[concat(variables('cleanAppName'), 'adfv2')]",
+      "ADFv2AccountName": "[concat(variables('cleanAppName'), 'adfv1')]",
       "virtualNetworkName": "[concat(variables('cleanAppName'), 'labnetwork')]",
       "subnetName": "[concat(variables('cleanAppName'), 'subnet')]",
       "nicName": "[concat(variables('cleanAppName'), 'nic')]",
@@ -145,7 +145,7 @@
       {
   
         "name": "[variables('ADFv2AccountName')]",
-        "apiVersion": "2017-09-01-preview",
+        "apiVersion": "2015-01-01-preview",
         "type": "Microsoft.DataFactory/factories",
         "location": "East US",
         "properties": {
@@ -405,11 +405,11 @@
         "location": "eastus2",
         "scale": null,
         "properties": {
-            "friendlyName": null,
             "seats": "2",
-            "description": null,
-            "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName'))]",
-            "vsoAccountId": ""
+            "storageAccount": {
+              "storageAccountId":"[resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName'))]",
+              "accessKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName')), variables('storageApiVersion')).keys[0].value]"
+            }
         },
         "dependsOn": [
             "[resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName'))]"
