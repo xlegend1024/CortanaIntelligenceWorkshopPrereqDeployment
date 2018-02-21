@@ -145,9 +145,9 @@
       {
   
         "name": "[variables('ADFv2AccountName')]",
-        "apiVersion": "2015-01-01-preview",
-        "type": "Microsoft.DataFactory/factories",
-        "location": "eastus",
+        "apiVersion": "2015-09-01",
+        "type": "Microsoft.DataFactory/dataFactories",
+        "location": "westus",
         "properties": {
           "loggingStorageAccountName": "[variables('vmStorageAccountName')]",
           "loggingStorageAccountKey": "[variables('vmStorageAccountName')]"
