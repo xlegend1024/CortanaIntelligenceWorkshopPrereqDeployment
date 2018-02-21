@@ -190,6 +190,47 @@
                   },
                   "external": true
             }
+          },
+          {
+            "type": "linkedservices",
+            "name": "BlobDestination",
+            "dependsOn": [
+              "[resourceId('Microsoft.DataFactory/dataFactories/', variables('ADFv2AccountName'))]"
+            ],
+            "apiVersion": "2015-10-01",
+            "properties": {
+                  "type": "AzureStorage",
+                  "description": "Azure Storage linked service",
+                  "typeProperties": {
+                    "connectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('mlStorageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName')), variables('storageApiVersion')).keys[0].value,';EndpointSuffix=core.windows.net')]"
+                  }
+            }
+          },
+          {
+            "type": "datasets",
+            "name": "MLOperationResult",
+            "dependsOn": [
+              "[resourceId('Microsoft.DataFactory/dataFactories/', variables('ADFv2AccountName'))]",
+              "BlobDestination"
+            ],
+            "apiVersion": "2015-10-01",
+            "properties": {
+                  "type": "AzureBlob",
+                  "linkedServiceName": "BlobSource",
+                  "typeProperties": {
+                    "fileName": "Scored_FlightsAndWeather.csv",
+                    "folderPath": "result",
+                    "format": {
+                          "type": "TextFormat",
+                          "columnDelimiter": ","
+                    }
+                  },
+                  "availability": {
+                    "frequency": "Hour",
+                    "interval": 12
+                  },
+                  "external": true
+            }
           }
         ]
       },
