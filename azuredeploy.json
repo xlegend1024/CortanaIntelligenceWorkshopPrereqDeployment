@@ -438,41 +438,7 @@
           "numberOfWorkers": "1",
           "hostingEnvironment": ""
         }
-      },
-      {
-        "type": "Microsoft.MachineLearningExperimentation/accounts",
-        "name": "[variables('expWorkspaceName')]",
-        "apiVersion": "2017-05-01-preview",
-        "location": "eastus2",
-        "scale": null,
-        "properties": {
-            "seats": "2",
-            "storageAccount": {
-              "storageAccountId":"[resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName'))]",
-              "accessKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName')), variables('storageApiVersion')).keys[0].value]"
-            }
-        },
-        "dependsOn": [
-            "[resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName'))]"
-        ]
-    },
-    {
-        "type": "Microsoft.MachineLearningModelManagement/accounts",
-        "sku": {
-            "name": "DevTest",
-            "capacity": 1
-        },
-        "name": "[variables('expModelspaceName')]",
-        "apiVersion": "2017-09-01-preview",
-        "location": "eastus2",
-        "scale": null,
-        "properties": {
-            "description": ""
-        },
-        "dependsOn": [
-          "[resourceId('Microsoft.MachineLearningExperimentation/accounts', variables('expWorkspaceName'))]"
-        ]
-    }
+      }
     ],
     "outputs": {
     }
