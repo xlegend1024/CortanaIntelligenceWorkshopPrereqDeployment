@@ -154,7 +154,7 @@
             "type": "linkedservices",
             "name": "BlobSource",
             "dependsOn": [
-                  "[variables('ADFv2AccountName')]"
+              "[resourceId('Microsoft.DataFactory/dataFactories/', variables('ADFv2AccountName'))]"
             ],
             "apiVersion": "2015-10-01",
             "properties": {
@@ -169,7 +169,8 @@
             "type": "datasets",
             "name": "FlightsAndWeatherDataSet",
             "dependsOn": [
-                  "[variables('ADFv2AccountName')]"
+              "[resourceId('Microsoft.DataFactory/dataFactories/', variables('ADFv2AccountName'))]",
+              "BlobSource"
             ],
             "apiVersion": "2015-10-01",
             "properties": {
