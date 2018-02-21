@@ -251,7 +251,7 @@
             }
           ]
         }
-      },/*
+      },
       {
         "apiVersion": "2017-03-30",
         "dependsOn": [
@@ -387,7 +387,7 @@
             ]
           }
         }
-      },*/
+      },
       {
         "type": "Microsoft.Web/sites",
         "name": "[variables('webappName')]",
